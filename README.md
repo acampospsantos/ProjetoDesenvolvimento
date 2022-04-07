@@ -23,5 +23,8 @@
 
 ### Protótipo de Baixa Fidelidade
 
+**Link para acesso**: 
+
 ### Protótipo de Alta Fidelidade
 
+**Link para acesso**: https://www.figma.com/file/4WwC1yzXQYw9BfjwLWz8ox/PROJETO-LIFERAY
