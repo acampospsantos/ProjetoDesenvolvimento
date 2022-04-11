@@ -9,9 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//singular
 @Entity
-@Table(name = "VOLUNTARIOS")
+@Table(name = "VOLUNTARIO")
 public class VoluntarioModel {
     private static final long serialVersionUID = 1L;
     
