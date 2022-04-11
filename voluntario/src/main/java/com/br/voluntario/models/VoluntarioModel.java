@@ -1,22 +1,19 @@
 package com.br.voluntario.models;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "VOLUNTARIO")
 public class VoluntarioModel {
-    private static final long serialVersionUID = 1L;
-    
+    //private static final long serialVersionUID = 1L;    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue
+    private long id;
     @Column(nullable = false, unique = true, length = 100)
     private String cpf;
     @Column(nullable = false, length = 100)
@@ -26,15 +23,16 @@ public class VoluntarioModel {
     @Column(nullable = false, unique = true, length = 15)
     private String numero;
     
+    /*
     public static long getSerialversionuid() {
         return serialVersionUID;
-    }
+    }*/
     
-    public UUID getId() {
+    public long getId() {
         return id;
     }
     
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
     
