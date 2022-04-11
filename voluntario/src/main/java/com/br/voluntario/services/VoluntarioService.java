@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class VoluntarioService {
@@ -43,7 +42,7 @@ public class VoluntarioService {
         return voluntarioRepository.findAll();
     }
 
-    public Optional<VoluntarioModel> findById(UUID id) {
+    public Optional<VoluntarioModel> findById(long id) {
         return voluntarioRepository.findById(id);
     }
 
