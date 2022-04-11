@@ -2,7 +2,6 @@ package com.br.voluntario.controllers;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -48,7 +47,7 @@ public class VoluntarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getOneVoluntario(@PathVariable(value = "id") UUID id) {
+    public ResponseEntity<Object> getOneVoluntario(@PathVariable(value = "id") long id) {
         Optional<VoluntarioModel> voluntarioModelOptional = voluntarioService.findById(id);
         if(!voluntarioModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("O voluntário não foi localizado");
@@ -57,7 +56,7 @@ public class VoluntarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteVoluntario(@PathVariable(value = "id") UUID id) {
+    public ResponseEntity<Object> deleteVoluntario(@PathVariable(value = "id") long id) {
         Optional<VoluntarioModel> voluntarioModelOptional = voluntarioService.findById(id);
         if(!voluntarioModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("O voluntário não foi localizado");
