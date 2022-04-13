@@ -1,5 +1,7 @@
 package com.br.voluntario.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import com.br.voluntario.dtos.OrganizacaoDto;
@@ -10,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,4 +35,11 @@ public class OrganizacaoController {
         BeanUtils.copyProperties(organizacaoDto, organizacaoModel);    
         return ResponseEntity.status(HttpStatus.CREATED).body(organizacaoService.save(organizacaoModel));
     }
+
+    @GetMapping
+    public ResponseEntity<List<OrganizacaoModel>> getAllOrganizacoes() {
+        return ResponseEntity.status(HttpStatus.OK).body(organizacaoService.findAll());
+    }
+
+    
 }
