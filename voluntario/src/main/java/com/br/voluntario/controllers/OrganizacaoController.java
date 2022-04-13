@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,4 +64,17 @@ public class OrganizacaoController {
         return ResponseEntity.status(HttpStatus.OK).body("O voluntário foi deletado");
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateOrganizacao(@PathVariable(value = "id") long id,
+                                    @RequestBody @Valid OrganizacaoDto organizacaoDto) {
+        Optional<OrganizacaoModel> organizacaoModelOptional = organizacaoService.findById(id);
+        if(!organizacaoModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("A organização não foi localizada");
+        }
+        var organizacaoModel = organizacaoModelOptional.get();
+        organizacaoModel.setNome(organizacaoDto.getNome());
+        organizacaoModel.setRamo(organizacaoDto.getRamo());
+        return ResponseEntity.status(HttpStatus.OK).body(organizacaoService.save(organizacaoModel));
+
+    }
 }
