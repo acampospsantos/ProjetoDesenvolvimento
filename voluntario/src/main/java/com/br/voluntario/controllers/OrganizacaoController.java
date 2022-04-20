@@ -35,6 +35,10 @@ public class OrganizacaoController {
 
     @PostMapping
     public ResponseEntity<Object> saveOrganizacao(@RequestBody @Valid OrganizacaoDto organizacaoDto) {
+        if(organizacaoService.existsBycnpj(organizacaoDto.getCnpj())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O CNPJ já está sendo utilizado.");
+        }
+
         var organizacaoModel = new OrganizacaoModel();
         BeanUtils.copyProperties(organizacaoDto, organizacaoModel);    
         return ResponseEntity.status(HttpStatus.CREATED).body(organizacaoService.save(organizacaoModel));
