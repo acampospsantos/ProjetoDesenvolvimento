@@ -17,4 +17,38 @@ public class TrabalhoDto {
     private LocalDateTime dataFim;
     @NotNull
     private String informacoesGerais;
+    
+    public int getQtdVoluntarios() {
+        return qtdVoluntarios;
+    }
+    
+    public void setQtdVoluntarios(int qtdVoluntarios) {
+        this.qtdVoluntarios = qtdVoluntarios;
+    }
+    
+    public LocalDateTime getDataInicio() {
+        return dataInicio;
+    }
+    
+    public void setDataInicio(LocalDateTime dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+    
+    public LocalDateTime getDataFim() {
+        return dataFim;
+    }
+    
+    public void setDataFim(LocalDateTime dataFim) {
+        this.dataFim = dataFim;
+    }
+    
+    public String getInformacoesGerais() {
+        return informacoesGerais;
+    }
+    
+    public void setInformacoesGerais(String informacoesGerais) {
+        this.informacoesGerais = informacoesGerais;
+    }
+
+    
 }
