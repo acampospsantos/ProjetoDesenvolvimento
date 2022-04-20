@@ -24,19 +24,18 @@ public class VoluntarioService {
         return voluntarioRepository.save(voluntarioModel);
     }
 
-    /*
-    public boolean existsByCPF(String cpf) {
-        return voluntarioRepository.existsByCPF(cpf);
+    
+    public boolean existsBycpf(String cpf) {
+        return voluntarioRepository.existsBycpf(cpf);
     }
 
-    public boolean existsByEmail(String email) {
-        return voluntarioRepository.existsByEmail(email);
+    public boolean existsByemail(String email) {
+        return voluntarioRepository.existsByemail(email);
     }
 
-    public boolean existsByNumero(String numero) {
-        return voluntarioRepository.existsByNumero(numero);
-    }
-    */
+    public boolean existsBynumero(String numero) {
+        return voluntarioRepository.existsBynumero(numero);
+    }    
 
     public List<VoluntarioModel> findAll() {
         return voluntarioRepository.findAll();
