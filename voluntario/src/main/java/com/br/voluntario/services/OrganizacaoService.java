@@ -24,6 +24,10 @@ public class OrganizacaoService {
         return organizacaoRepository.save(organizacaoModel);
     }
 
+    public boolean existsBycnpj(String cnpj) {
+        return organizacaoRepository.existsBycnpj(cnpj);
+    }
+
     public List<OrganizacaoModel> findAll() {
         return organizacaoRepository.findAll();
     }
