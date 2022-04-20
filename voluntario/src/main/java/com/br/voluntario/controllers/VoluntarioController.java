@@ -35,7 +35,15 @@ public class VoluntarioController {
 
     @PostMapping
     public ResponseEntity<Object> saveVoluntario(@RequestBody @Valid VoluntarioDto voluntarioDto) {
-        
+        if(voluntarioService.existsBycpf(voluntarioDto.getCpf())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O CPF digitado já está sendo utilizado.");
+        }
+        if(voluntarioService.existsByemail(voluntarioDto.getEmail())) {         
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O email digitado já está sendo utilizado.");
+        }
+        if(voluntarioService.existsBynumero(voluntarioDto.getNumero())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O número digitado já está sendo utilizado.");
+        }
 
         var voluntarioModel = new VoluntarioModel();
         BeanUtils.copyProperties(voluntarioDto, voluntarioModel);
