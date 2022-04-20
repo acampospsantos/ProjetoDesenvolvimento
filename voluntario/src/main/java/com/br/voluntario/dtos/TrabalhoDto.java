@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 
 public class TrabalhoDto {
     
+    @NotNull
+    private String nome;
     @Min(value = 1)
     private int qtdVoluntarios;
     @FutureOrPresent
@@ -18,6 +20,14 @@ public class TrabalhoDto {
     @NotNull
     private String informacoesGerais;
     
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public int getQtdVoluntarios() {
         return qtdVoluntarios;
     }

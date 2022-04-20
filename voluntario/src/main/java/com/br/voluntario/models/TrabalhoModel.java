@@ -16,6 +16,8 @@ public class TrabalhoModel {
     @GeneratedValue
     private long id;
     @Column(nullable = false)
+    private String nome;
+    @Column(nullable = false)
     private int qtdVoluntarios;
     @Column(nullable = true)
     private LocalDateTime dataInicio;
@@ -23,7 +25,15 @@ public class TrabalhoModel {
     private LocalDateTime dataFim;
     @Column(nullable = false)
     private String informacoesGerais;
-    
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public long getId() {
         return id;
     
