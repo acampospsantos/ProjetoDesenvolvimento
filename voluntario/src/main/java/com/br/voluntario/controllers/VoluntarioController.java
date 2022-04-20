@@ -81,6 +81,14 @@ public class VoluntarioController {
         if(!voluntarioModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("O voluntário não foi localizado");
         }
+
+        if(voluntarioService.existsByemail(voluntarioDto.getEmail())) {         
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O email digitado já está sendo utilizado.");
+        }
+        if(voluntarioService.existsBynumero(voluntarioDto.getNumero())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O número digitado já está sendo utilizado.");
+        }
+        
         var voluntarioModel = voluntarioModelOptional.get();
         voluntarioModel.setEmail(voluntarioDto.getEmail());
         voluntarioModel.setNumero(voluntarioDto.getNumero());
