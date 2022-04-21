@@ -3,9 +3,10 @@ package com.br.voluntario.dtos;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.Future;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TrabalhoDto {
     
@@ -13,9 +14,11 @@ public class TrabalhoDto {
     private String nome;
     @Min(value = 1)
     private int qtdVoluntarios;
-    @FutureOrPresent
-    private LocalDateTime dataInicio;    
     @Future
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataInicio;        
+    @Future
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataFim;
     @NotNull
     private String informacoesGerais;
