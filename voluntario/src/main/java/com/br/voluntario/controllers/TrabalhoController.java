@@ -53,5 +53,13 @@ public class TrabalhoController {
         return ResponseEntity.status(HttpStatus.OK).body(trabalhoModelOptional.get());
     }
 
-    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteTrabalho(@PathVariable(value = "id") long id) {
+        Optional<TrabalhoModel> trabalhoModelOptional = trabalhoService.findById(id);
+        if(!trabalhoModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("O trabalho não foi localizado");
+        }
+        trabalhoService.delete(trabalhoModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("O trabalho foi deletado");
+    }
 }
