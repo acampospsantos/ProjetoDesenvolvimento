@@ -6,8 +6,11 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.br.voluntario.dtos.OrganizacaoDto;
+import com.br.voluntario.dtos.TrabalhoDto;
 import com.br.voluntario.models.OrganizacaoModel;
+import com.br.voluntario.models.TrabalhoModel;
 import com.br.voluntario.services.OrganizacaoService;
+import com.br.voluntario.services.TrabalhoService;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
@@ -28,9 +31,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrganizacaoController {
     
     final OrganizacaoService organizacaoService;
+    final TrabalhoService trabalhoService;
 
-    public OrganizacaoController(OrganizacaoService organizacaoService) {
+    public OrganizacaoController(OrganizacaoService organizacaoService, TrabalhoService trabalhoService) {
         this.organizacaoService = organizacaoService;
+        this.trabalhoService = trabalhoService;
+    }
+
+    @PostMapping("/{orgId}/trabalho")
+    public ResponseEntity postController(@PathVariable("orgId") Long orgId,
+    @RequestBody TrabalhoDto trabalhoDto) {
+        Optional<OrganizacaoModel> organizacaoModelOptional = organizacaoService.findById(orgId);
+        var trabalhoModel = new TrabalhoModel();
+        BeanUtils.copyProperties(trabalhoDto, trabalhoModel);    
+        trabalhoModel.setOrganizacaoModel(organizacaoModelOptional.get());
+        organizacaoModelOptional.get().getTrabalhos().add(trabalhoModel);        
+        
+        //var organizacaoModel = organizacaoModelOptional.get();
+        //organizacaoService.save(organizacaoModel);
+        return ResponseEntity.status(HttpStatus.OK).body(trabalhoService.save(trabalhoModel));
     }
 
     @PostMapping

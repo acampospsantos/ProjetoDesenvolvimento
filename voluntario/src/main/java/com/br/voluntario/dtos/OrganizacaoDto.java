@@ -1,6 +1,11 @@
 package com.br.voluntario.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
+
+import com.br.voluntario.models.TrabalhoModel;
 
 public class OrganizacaoDto {
     
@@ -10,6 +15,7 @@ public class OrganizacaoDto {
     private String nome;
     @NotBlank
     private String ramo;
+    private List<TrabalhoModel> trabalhos = new ArrayList<>();
     
     public String getCnpj() {
         return cnpj;

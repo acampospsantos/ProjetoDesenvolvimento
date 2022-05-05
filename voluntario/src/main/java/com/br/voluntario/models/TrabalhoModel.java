@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,20 @@ public class TrabalhoModel {
     private LocalDateTime dataFim;
     @Column(nullable = false)
     private String informacoesGerais;
+
+    @ManyToOne
+    @JoinColumn(name = "org_id")
+    private OrganizacaoModel organizacaoModel;
+
+
+    
+    public OrganizacaoModel getOrganizacaoModel() {
+        return organizacaoModel;
+    }
+
+    public void setOrganizacaoModel(OrganizacaoModel organizacaoModel) {
+        this.organizacaoModel = organizacaoModel;
+    }
 
     public String getNome() {
         return nome;
