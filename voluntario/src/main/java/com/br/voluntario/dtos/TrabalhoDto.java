@@ -6,7 +6,6 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import com.br.voluntario.models.OrganizacaoModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TrabalhoDto {
@@ -22,8 +21,7 @@ public class TrabalhoDto {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataFim;
     @NotNull
-    private String informacoesGerais;
-    private OrganizacaoModel organizacaoModel;
+    private String informacoesGerais;    
     
     public String getNome() {
         return nome;
