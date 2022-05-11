@@ -1,5 +1,6 @@
 package com.br.voluntario.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,7 @@ public class OrganizacaoController {
     }
 
     @PostMapping("/{orgId}/trabalho")
-    public ResponseEntity postController(@PathVariable("orgId") Long orgId,
+    public ResponseEntity<Object> postController(@PathVariable("orgId") Long orgId,
     @RequestBody TrabalhoDto trabalhoDto) {
         Optional<OrganizacaoModel> organizacaoModelOptional = organizacaoService.findById(orgId);
         var trabalhoModel = new TrabalhoModel();
@@ -64,8 +65,18 @@ public class OrganizacaoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OrganizacaoModel>> getAllOrganizacoes() {
-        return ResponseEntity.status(HttpStatus.OK).body(organizacaoService.findAll());
+    public ResponseEntity<List<OrganizacaoDto>> getAllOrganizacoes() {
+        List<OrganizacaoDto> organizacoes = new ArrayList<>();
+        List<OrganizacaoModel> organizacaoModels = organizacaoService.findAll();
+        OrganizacaoDto organizacaoDto;
+        for(int i = 0; i < organizacaoModels.size(); i++) {
+            organizacaoDto = new OrganizacaoDto();
+            organizacaoDto.setCnpj(organizacaoModels.get(i).getCnpj());
+            organizacaoDto.setNome(organizacaoModels.get(i).getNome());
+            organizacaoDto.setRamo(organizacaoModels.get(i).getRamo());
+            organizacoes.add(organizacaoDto);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(organizacoes);
     }
 
     @GetMapping("/{id}")
