@@ -1,5 +1,6 @@
 package com.br.voluntario.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,8 +42,20 @@ public class TrabalhoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TrabalhoModel>> getAllTrabalhos() {
-        return ResponseEntity.status(HttpStatus.OK).body(trabalhoService.findAll());
+    public ResponseEntity<List<TrabalhoDto>> getAllTrabalhos() {
+        List<TrabalhoDto> trabalhos = new ArrayList<>();
+        List<TrabalhoModel> trabalhoModels = trabalhoService.findAll();
+        TrabalhoDto trabalhoDto;
+        for(int i = 0; i < trabalhoModels.size(); i++) {
+            trabalhoDto = new TrabalhoDto();
+            trabalhoDto.setDataInicio(trabalhoModels.get(i).getDataInicio());
+            trabalhoDto.setDataFim(trabalhoModels.get(i).getDataFim());
+            trabalhoDto.setInformacoesGerais(trabalhoModels.get(i).getInformacoesGerais());
+            trabalhoDto.setNome(trabalhoModels.get(i).getNome());
+            trabalhoDto.setQtdVoluntarios(trabalhoModels.get(i).getQtdVoluntarios());            
+            trabalhos.add(trabalhoDto);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(trabalhos);
     }
 
     @GetMapping("/{id}")
