@@ -2,7 +2,7 @@
 
 ## Proposição Inicial do Front:
 
-Nós do Front, para montar o site de maneira mais otimizada, tivemos a ideia de fazer inicialmente quatro Páginas: 
+Nós, do Front, para montar o site de maneira mais otimizada, tivemos a ideia de fazer inicialmente quatro Páginas: 
 ### 1.  Página Padrão/Base do Site
 ![I Página Padrão-Base](https://user-images.githubusercontent.com/54013675/170502009-f24631f9-48a1-42b2-adaa-0861804a0732.png)
 
