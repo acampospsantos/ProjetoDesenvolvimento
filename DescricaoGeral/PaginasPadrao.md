@@ -19,12 +19,16 @@ Nós, do Front, para montar o site de maneira mais otimizada, tivemos a ideia de
 
 ## Na prática:
 ### 1.  Página Padrão/Base do Site
+![Pagina1](https://user-images.githubusercontent.com/54013675/171664506-e351433d-9ac8-49e5-8149-f5e63e439c1a.png)
 
 ### 2. Página Padrão Inicial - Pré Cadastro
+![Pagina2](https://user-images.githubusercontent.com/54013675/171664560-c74fbcdb-3201-42a1-b8f1-1a89e47a4033.png)
 
 ### 3. Página Padrão - Pós Cadastro(Voluntário)
+![Pagina3](https://user-images.githubusercontent.com/54013675/171664587-decf77f9-28d3-465e-98a8-3df4601f5b91.png)
 
 ### 4. Página Padrão - Pós Cadastro(Organização)
+![Pagina4](https://user-images.githubusercontent.com/54013675/171664640-34113267-0fa1-4ccb-8679-cc908600df7b.png)
 
 &nbsp;
 
